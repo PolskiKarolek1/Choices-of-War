@@ -1,3 +1,9 @@
+### Teamleden
+Karol (PolskiKarolek1): Manager
+Marco (merkoPolo): Chef Kwaliteit
+Tristan (sigmaboyTris): Chef Marketing
+Kacper (educatixxx): Chef Product
+
 # Choices-of-War
 # WWII: Dual Perspectives - Marketing & Projectdocumentatie
 
