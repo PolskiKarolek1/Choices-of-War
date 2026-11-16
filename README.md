@@ -31,12 +31,12 @@ Kacper (educatixxx): Chef Product
 * **Uitleg:** Een speciale onderwijsversie voorzien van lesmateriaal, achtergrondinformatie en een docentendashboard wordt verkocht aan scholen.
 * **Waarom geschikt:** Sluit direct aan bij het educatieve karakter van het informaticaproject en levert een stabiele inkomstenstroom op.
 
-Titel: Mogelijke klant benaderen – Geschiedenisdocent
+### Titel: Mogelijke klant benaderen – Geschiedenisdocent
 
-Beschrijving:
+## Beschrijving:
 We willen een geschiedenisdocent benaderen als mogelijke klant voor WWII: Dual Perspectives. Het doel is te onderzoeken of onze game geschikt is als educatief hulpmiddel tijdens geschiedenislessen over de Tweede Wereldoorlog.
 
-Taken:
+## Taken:
 - [ ] Een geschikte geschiedenisdocent zoeken.
 - [ ] Contactgegevens van de docent vinden.
 - [ ] Conceptmail controleren en goedkeuren.
@@ -44,5 +44,5 @@ Taken:
 - [ ] Feedback van de docent verzamelen.
 - [ ] Feedback bespreken binnen het team.
 
-Assignee: meneer-van-informatica
-Labels: Marketing, Feedback
+# Assignee: meneer-van-informatica
+# Labels: Marketing, Feedback
