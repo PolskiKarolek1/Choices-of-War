@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopping Axis Expansion op Steam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1b2838; /* Klassiek Steam donkerblauw */
+            color: #c7d5e0;
+        }
+        .steam-header { background-color: #171a21; }
+        .steam-card { background: rgba(0, 0, 0, 0.25); }
+        .steam-purchase-box {
+            background: linear-gradient(to right, rgba(42, 71, 94, 0.8), rgba(27, 40, 56, 0.9));
+        }
+        .btn-steam-green {
+            background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+        }
+        .btn-steam-green:hover {
+            background: linear-gradient(to right, #8ed629 5%, #6aa621 95%);
+            color: #fff;
+        }
+        .btn-steam-blue {
+            background: linear-gradient(to right, #47bfff 5%, #1a44c2 60%);
+            background-size: 330% 100%;
+            background-position: 25%;
+        }
+        .btn-steam-blue:hover {
+            background-position: 0%;
+        }
+        .font-mono-mil { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
+
+    <!-- TOP STEAM NAVIGATIEBALK -->
+    <header class="steam-header border-b border-slate-800/80 shadow-lg sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- Logo & Menu -->
+            <div class="flex items-center gap-8">
+                <a href="#" class="flex items-center gap-2.5 text-white font-extrabold text-xl tracking-wider">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-md">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-9.95 9.1l5.35 2.21a2.8 2.8 0 0 1 1.6-.49c.18 0 .36.02.53.05l2.4-3.48v-.05a3.75 3.75 0 1 1 3.75 3.75h-.09l-3.42 2.45c.03.16.05.33.05.5a2.82 2.82 0 0 1-5.58.56l-3.83-1.58A10 10 0 1 0 12 2z"/></svg>
+                    </div>
+                    <span>STEAM <span class="text-xs font-normal text-slate-400 uppercase tracking-widest ml-1">Educatie</span></span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-6 text-sm font-semibold uppercase tracking-wide">
+                    <button onclick="switchTab('store')" id="tab-store" class="text-sky-400 border-b-2 border-sky-400 pb-1 transition">Winkel</button>
+                    <button onclick="switchTab('library')" id="tab-library" class="text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5">
+                        Bibliotheek
+                        <span id="lib-badge" class="hidden bg-sky-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.2 rounded">1</span>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Rechts: Gebruiker / Status -->
+            <div class="flex items-center gap-4 text-xs">
+                <span id="ownership-pill" class="hidden bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 px-3 py-1 rounded font-semibold">
+                    ✓ In Bibliotheek
+                </span>
+                <div class="flex items-center gap-2 bg-slate-800/90 px-3 py-1.5 rounded border border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span class="font-semibold text-slate-200">Commandant_NL</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOOFDCONTENT: WINKELPAGINA -->
+    <main id="view-store" class="max-w-6xl w-full mx-auto px-4 py-8 flex-1">
+        
+        <!-- Breadcrumbs & Titel -->
+        <div class="mb-4">
+            <div class="text-xs text-slate-400 mb-1">Alle spellen &gt; Strategie &gt; Historisch &gt; <span class="text-slate-200">Stopping Axis Expansion</span></div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <h1 class="text-3xl font-bold text-white tracking-tight">Stopping Axis Expansion: Geallieerd Opperbevel</h1>
+                <button onclick="switchTab('library')" class="text-xs bg-slate-700/70 hover:bg-slate-600 text-sky-300 px-3 py-1.5 rounded transition self-start">
+                    Naar Bibliotheek &rarr;
+                </button>
+            </div>
+        </div>
+
+        <!-- HERO SECTIE: Media Galerij (Links) + Game Info (Rechts) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-[#0f1922]/80 p-4 rounded-md shadow-2xl border border-slate-800/80 mb-8">
+            
+            <!-- Linkerkolom: Screenshot / Preview (7 kolommen) -->
+            <div class="lg:col-span-7 flex flex-col gap-3">
+                <div id="main-preview" class="relative aspect-video bg-slate-950 rounded overflow-hidden border border-slate-800 flex items-center justify-center group">
+                    <img id="preview-img" src="https://placehold.co/1280x720/0f172a/f59e0b?text=EUROPA+THEATER+1938-1945+%7C+STRATEGISCHE+KAART" alt="Game Preview" class="w-full h-full object-cover transition duration-500">
+                    <div class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm px-3 py-1 rounded text-xs font-mono-mil text-amber-400 border border-amber-500/30">
+                        IN-GAME BEELDEN // GEALLIEERD OPPERBEVEL
+                    </div>
+                </div>
+
+                <!-- Miniatuur selectie -->
+                <div class="grid grid-cols-4 gap-2">
+                    <button onclick="changePreview('https://placehold.co/1280x720/0f172a/f59e0b?text=EUROPA+THEATER+1938-1945+%7C+STRATEGISCHE+KAART')" class="border-2 border-sky-400 rounded overflow-hidden aspect-video opacity-100 hover:opacity-100 transition">
+                        <img src="https://placehold.co/320x180/0f172a/f59e0b?text=Wereldkaart" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="changePreview('https://placehold.co/1280x720/1e1710/fbbf24?text=ENIGMA+DECODERING+%26+DOSSIERS')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
+                        <img src="https://placehold.co/320x180/1e1710/fbbf24?text=Enigma+Terminal" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="changePreview('https://placehold.co/1280x720/2a1a08/f59e0b?text=HISTORISCHE+VELDPOST+CUTSCENES')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
+                        <img src="https://placehold.co/320x180/2a1a08/f59e0b?text=Veldpost+Brieven" class="w-full h-full object-cover">
+                    </button>
+                    <button onclick="changePreview('https://placehold.co/1280x720/3a0808/ef4444?text=BESLUITVORMING+%26+GEVOLGEN')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
+                        <img src="https://placehold.co/320x180/3a0808/ef4444?text=Dilemma%27s" class="w-full h-full object-cover">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rechterkolom: Game Cover & Metadata (5 kolommen) -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <img src="https://placehold.co/600x260/1e293b/f59e0b?text=STOPPING+AXIS+EXPANSION" alt="Banner" class="w-full rounded mb-3 border border-slate-700/60">
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        Stap in de schoenen van het Geallieerd Opperbevel tijdens de Tweede Wereldoorlog (1938–1945). Balanceer tussen <strong>Cohesie</strong>, <strong>Logistiek</strong> en <strong>Thuisfront Moraal</strong> terwijl jouw historische keuzes het lot van Europa bepalen.
+                    </p>
+
+                    <div class="space-y-1.5 text-xs border-t border-slate-800 pt-3">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase">Recensies:</span>
+                            <span class="text-sky-400 font-semibold">Zeer positief (94% van 1.240)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase">Uitgavedatum:</span>
+                            <span class="text-slate-300">1945 / Editie 2026</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase">Ontwikkelaar:</span>
+                            <span class="text-sky-400">Allied Command Studios</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="mt-4 pt-3 border-t border-slate-800">
+                    <div class="text-[11px] text-slate-500 mb-1.5">Populaire tags voor dit product:</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs px-2.5 py-0.5 rounded cursor-default">Tweede Wereldoorlog</span>
+                        <span class="bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs px-2.5 py-0.5 rounded cursor-default">Strategie</span>
+                        <span class="bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs px-2.5 py-0.5 rounded cursor-default">Educatief</span>
+                        <span class="bg-slate-800 hover:bg-slate-700 text-sky-300 text-xs px-2.5 py-0.5 rounded cursor-default">Keuzes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AANKOOP / LAUNCH BALK (Exact zoals op Steam) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- De Koop / Launch Box -->
+                <div class="steam-purchase-box p-5 rounded-md border border-sky-900/50 shadow-xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-white">Koop Stopping Axis Expansion</h2>
+                            <p id="purchase-subtext" class="text-xs text-slate-300 mt-0.5">Inclusief volledige campagne (1938-1945), D3 Europa-kaart & Historische Dossiers.</p>
+                        </div>
+
+                        <!-- Prijs + Actieknop -->
+                        <div class="flex items-center bg-black/60 p-1.5 rounded border border-slate-700/80 self-start sm:self-center">
+                            <div id="price-tag" class="px-3 text-sm font-semibold text-slate-200">
+                                Gratis <span class="text-xs text-emerald-400 ml-1">(Educatie Licentie)</span>
+                            </div>
+
+                            <!-- Knop 1: Kopen (Zichtbaar als nog niet gekocht) -->
+                            <button id="btn-buy-game" onclick="purchaseGame()" class="btn-steam-green text-white font-bold text-sm px-5 py-2.5 rounded transition cursor-pointer shadow">
+                                Toevoegen aan account
+                            </button>
+
+                            <!-- Knop 2: Spelen / Launchen (Zichtbaar na aankoop) -->
+                            <button id="btn-launch-game" onclick="launchGame()" class="hidden btn-steam-blue text-white font-bold text-sm px-6 py-2.5 rounded transition cursor-pointer shadow flex items-center gap-2">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                NU SPELEN
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Over dit spel -->
+                <div class="steam-card p-6 rounded-md border border-slate-800/80 space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-white border-b border-slate-700/80 pb-2">Over dit spel</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        In <strong>Stopping Axis Expansion</strong> neem je plaats aan de strategische kaartentafel van de Geallieerden. Van de Sudetencrisis in 1938 tot de beslissende landing in Normandië: elke beslissing heeft directe gevolgen voor het verloop van de oorlog.
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-300 list-disc pl-5">
+                        <li><strong>Interactieve D3 Topografische Kaart:</strong> Wijs troepen en luchtmacht toe aan specifieke regio's in Europa.</li>
+                        <li><strong>Enigma Telegraaf & Dossiers:</strong> Ontcijfer geheime bevelcodes en lees historische achtergrondinformatie.</li>
+                        <li><strong>Drie Cruciale Balansmeters:</strong> Houd Cohesie (Oost-West), Logistiek & Productie en het Thuisfront Moraal in evenwicht.</li>
+                        <li><strong>Authentieke Veldpost:</strong> Beleef de oorlog door de ogen van soldaten en burgers via historische brieven.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Rechter zijbalk: Systeemeisen & Features -->
+            <div class="lg:col-span-4 space-y-4">
+                <div class="steam-card p-4 rounded-md border border-slate-800/80 text-xs space-y-2.5">
+                    <div class="flex items-center gap-2.5 text-slate-300">
+                        <span class="bg-slate-800 p-1.5 rounded text-sky-400">👤</span>
+                        <span>Singleplayer Strategische Simulatie</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-slate-300">
+                        <span class="bg-slate-800 p-1.5 rounded text-sky-400">🏆</span>
+                        <span>Historische Eindevaluatie</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-slate-300">
+                        <span class="bg-slate-800 p-1.5 rounded text-sky-400">🇳🇱</span>
+                        <span>Volledig in het Nederlands</span>
+                    </div>
+                </div>
+
+                <div class="steam-card p-4 rounded-md border border-slate-800/80 text-xs space-y-2">
+                    <h4 class="font-bold text-slate-200 uppercase tracking-wider">Systeemeisen</h4>
+                    <p class="text-slate-400"><strong class="text-slate-300">Besturingssysteem:</strong> Elke moderne webbrowser (Chrome, Edge, Firefox, Safari)</p>
+                    <p class="text-slate-400"><strong class="text-slate-300">Netwerk:</strong> Breedband-internetverbinding (voor D3.js kaartdata)</p>
+                    <p class="text-slate-400"><strong class="text-slate-300">Opslag:</strong> 0 MB (Direct speelbaar in browser)</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- TWEEDE WEERGAVE: STEAM BIBLIOTHEEK (LAUNCHER) -->
+    <main id="view-library" class="hidden max-w-6xl w-full mx-auto px-4 py-8 flex-1">
+        <div class="bg-[#171a21] border border-slate-800 rounded-lg overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 min-h-[480px]">
+            
+            <!-- Zijbalk spellenlijst -->
+            <div class="md:col-span-3 bg-[#12151a] border-r border-slate-800 p-3">
+                <div class="text-xs font-bold uppercase text-slate-500 tracking-wider mb-3 px-2">Mijn Spellen</div>
+                <div id="library-empty-msg" class="text-xs text-slate-500 px-2 italic">
+                    Je hebt dit spel nog niet gekocht in de winkel.
+                </div>
+                <div id="library-game-item" class="hidden bg-sky-900/40 border border-sky-500/40 text-white px-3 py-2 rounded text-sm font-semibold flex items-center gap-2 cursor-pointer">
+                    <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                    Stopping Axis Expansion
+                </div>
+            </div>
+
+            <!-- Rechter detailpaneel -->
+            <div class="md:col-span-9 p-6 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-[#1b2838]">
+                <div id="library-content-locked" class="my-auto text-center space-y-3">
+                    <p class="text-slate-400 text-sm">Je bibliotheek is nog leeg. Ga naar de winkel om het spel aan je account toe te voegen.</p>
+                    <button onclick="switchTab('store')" class="btn-steam-blue text-white text-xs font-bold px-4 py-2 rounded">Terug naar Winkel</button>
+                </div>
+
+                <div id="library-content-unlocked" class="hidden space-y-6">
+                    <div class="relative rounded-lg overflow-hidden border border-slate-700 h-56 flex items-end p-6 bg-cover bg-center" style="background-image: linear-gradient(to top, #0f172a, transparent), url('https://placehold.co/1200x500/0f172a/f59e0b?text=GEALLIEERD+OPPERBEVEL');">
+                        <div>
+                            <span class="text-xs font-mono-mil text-amber-400 uppercase tracking-widest">Gereed om te starten</span>
+                            <h2 class="text-3xl font-extrabold text-white">Stopping Axis Expansion</h2>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-6 bg-slate-950/60 p-4 rounded-lg border border-slate-800">
+                        <button onclick="launchGame()" class="btn-steam-green text-white font-extrabold text-base px-8 py-3 rounded flex items-center gap-2.5 shadow-lg cursor-pointer">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            SPELEN
+                        </button>
+                        <div class="text-xs space-y-0.5">
+                            <div class="text-slate-400 uppercase">Status</div>
+                            <div class="text-emerald-400 font-semibold">Geïnstalleerd & Klaar</div>
+                        </div>
+                        <div class="text-xs space-y-0.5">
+                            <div class="text-slate-400 uppercase">Campagne</div>
+                            <div class="text-slate-200 font-semibold">1938 – 1945 (4 Scenario's)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- LAUNCHING OVERLAY (Wanneer op Spelen wordt geklikt) -->
+    <div id="launch-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="bg-[#171a21] border border-sky-500/40 p-6 rounded-lg max-w-sm w-full text-center shadow-2xl space-y-4">
+            <div class="w-12 h-12 mx-auto rounded-full border-4 border-sky-500 border-t-transparent animate-spin"></div>
+            <div>
+                <h3 class="text-white font-bold text-lg">Spel starten...</h3>
+                <p class="text-xs text-slate-400 mt-1">Verbinding maken met Geallieerd Opperbevel (index.html)</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="steam-header text-slate-500 text-xs py-6 border-t border-slate-800/80 mt-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span>© 2026 Allied Command Studios. Educatieve simulatie Tweede Wereldoorlog.</span>
+            <span>Steam-interface ontwerp voor schoolproject.</span>
+        </div>
+    </footer>
+
+    <script>
+        // Controleer bij laden of het spel al "gekocht" is in localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('sae_owned') === 'true') {
+                setOwnedUI();
+            }
+        });
+
+        function changePreview(src) {
+            document.getElementById('preview-img').src = src;
+        }
+
+        function purchaseGame() {
+            // Sla aankoop op in de browser zodat het onthouden blijft
+            localStorage.setItem('sae_owned', 'true');
+            setOwnedUI();
+        }
+
+        function setOwnedUI() {
+            // Winkel knoppen aanpassen
+            document.getElementById('btn-buy-game').classList.add('hidden');
+            document.getElementById('price-tag').classList.add('hidden');
+            document.getElementById('btn-launch-game').classList.remove('hidden');
+            document.getElementById('purchase-subtext').innerHTML = '<span class="text-emerald-400 font-semibold">✓ Dit spel staat in jouw Steam-bibliotheek.</span>';
+
+            // Header & Bibliotheek aanpassen
+            document.getElementById('ownership-pill').classList.remove('hidden');
+            document.getElementById('lib-badge').classList.remove('hidden');
+            document.getElementById('library-empty-msg').classList.add('hidden');
+            document.getElementById('library-game-item').classList.remove('hidden');
+            document.getElementById('library-content-locked').classList.add('hidden');
+            document.getElementById('library-content-unlocked').classList.remove('hidden');
+        }
+
+        function switchTab(tab) {
+            const viewStore = document.getElementById('view-store');
+            const viewLib = document.getElementById('view-library');
+            const tabStore = document.getElementById('tab-store');
+            const tabLib = document.getElementById('tab-library');
+
+            if (tab === 'store') {
+                viewStore.classList.remove('hidden');
+                viewLib.classList.add('hidden');
+                tabStore.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition";
+                tabLib.className = "text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5";
+            } else {
+                viewStore.classList.add('hidden');
+                viewLib.classList.remove('hidden');
+                tabLib.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition flex items-center gap-1.5";
+                tabStore.className = "text-slate-300 hover:text-white pb-1 transition";
+            }
+        }
+
+        function launchGame() {
+            const modal = document.getElementById('launch-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Wacht 1.2 seconden voor het "Launching..." effect en open dan index.html
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
