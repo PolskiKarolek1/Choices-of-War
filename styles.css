@@ -2,8 +2,8 @@
 body{font-family:'Inter',sans-serif}
 .font-mono-military{font-family:'JetBrains Mono',monospace}
 .font-typewriter{font-family:'Special Elite','Courier New',monospace}
-.map-region{fill:#1e293b;transition:all .3s ease}
-.map-region-neutral{fill:#0f172a;pointer-events:none}
+.map-region{fill:#1e293b;stroke:#334155;stroke-width:1px;transition:all .3s ease}
+.map-region-neutral{fill:#0f172a;stroke:#1e293b;pointer-events:none}
 .clickable-ocean{fill:#020617;cursor:pointer}
 .clickable-ocean:hover{fill:#0f172a}
 .map-region:hover{fill:#334155!important;stroke:#94a3b8!important;stroke-width:1.5px!important;cursor:pointer}
