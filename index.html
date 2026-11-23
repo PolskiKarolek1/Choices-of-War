@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1b2838; /* Klassiek Steam donkerblauw */
+            background-color: #1b2838;
             color: #c7d5e0;
         }
         .steam-header { background-color: #171a21; }
@@ -41,7 +41,6 @@
     <!-- TOP STEAM NAVIGATIEBALK -->
     <header class="steam-header border-b border-slate-800/80 shadow-lg sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
-            <!-- Logo & Menu -->
             <div class="flex items-center gap-8">
                 <a href="index.html" class="flex items-center gap-2.5 text-white font-extrabold text-xl tracking-wider">
                     <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-md">
@@ -51,15 +50,14 @@
                 </a>
 
                 <nav class="hidden md:flex items-center gap-6 text-sm font-semibold uppercase tracking-wide">
-                    <button onclick="switchTab('store')" id="tab-store" class="text-sky-400 border-b-2 border-sky-400 pb-1 transition">Winkel</button>
-                    <button onclick="switchTab('library')" id="tab-library" class="text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5">
+                    <button onclick="switchTab('store')" id="tab-store" class="text-sky-400 border-b-2 border-sky-400 pb-1 transition cursor-pointer">Winkel</button>
+                    <button onclick="switchTab('library')" id="tab-library" class="text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5 cursor-pointer">
                         Bibliotheek
                         <span id="lib-badge" class="hidden bg-sky-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.2 rounded">1</span>
                     </button>
                 </nav>
             </div>
 
-            <!-- Rechts: Gebruiker / Status -->
             <div class="flex items-center gap-4 text-xs">
                 <span id="ownership-pill" class="hidden bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 px-3 py-1 rounded font-semibold">
                     ✓ In Bibliotheek
@@ -75,12 +73,11 @@
     <!-- HOOFDCONTENT: WINKELPAGINA -->
     <main id="view-store" class="max-w-6xl w-full mx-auto px-4 py-8 flex-1">
         
-        <!-- Breadcrumbs & Titel -->
         <div class="mb-4">
             <div class="text-xs text-slate-400 mb-1">Alle spellen &gt; Strategie &gt; Historisch &gt; <span class="text-slate-200">Stopping Axis Expansion</span></div>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <h1 class="text-3xl font-bold text-white tracking-tight">Stopping Axis Expansion: Geallieerd Opperbevel</h1>
-                <button onclick="switchTab('library')" class="text-xs bg-slate-700/70 hover:bg-slate-600 text-sky-300 px-3 py-1.5 rounded transition self-start">
+                <button onclick="switchTab('library')" class="text-xs bg-slate-700/70 hover:bg-slate-600 text-sky-300 px-3 py-1.5 rounded transition self-start cursor-pointer">
                     Naar Bibliotheek &rarr;
                 </button>
             </div>
@@ -89,36 +86,38 @@
         <!-- HERO SECTIE: Media Galerij (Links) + Game Info (Rechts) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-[#0f1922]/80 p-4 rounded-md shadow-2xl border border-slate-800/80 mb-8">
             
-            <!-- Linkerkolom: Screenshot / Preview (7 kolommen) -->
+            <!-- Linkerkolom: Grote Preview + 4 Miniatuur Screenshots -->
             <div class="lg:col-span-7 flex flex-col gap-3">
-                <div id="main-preview" class="relative aspect-video bg-slate-950 rounded overflow-hidden border border-slate-800 flex items-center justify-center group">
-                    <img id="preview-img" src="https://placehold.co/1280x720/0f172a/f59e0b?text=EUROPA+THEATER+1938-1945+%7C+STRATEGISCHE+KAART" alt="Game Preview" class="w-full h-full object-cover transition duration-500">
-                    <div class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm px-3 py-1 rounded text-xs font-mono-mil text-amber-400 border border-amber-500/30">
-                        IN-GAME BEELDEN // GEALLIEERD OPPERBEVEL
+                <div id="main-preview" class="relative aspect-video bg-slate-950 rounded overflow-hidden border border-slate-800 flex items-center justify-center">
+                    <img id="preview-img" src="images/kaart.png" onerror="this.src='images/banner.jpg'" alt="Game Preview" class="w-full h-full object-cover transition duration-500">
+                    <div id="preview-caption" class="absolute bottom-3 left-3 bg-black/85 backdrop-blur-sm px-3 py-1 rounded text-xs font-mono-mil text-amber-400 border border-amber-500/30">
+                        EUROPA THEATER 1938-1945 // STRATEGISCHE KAART
                     </div>
                 </div>
 
                 <!-- Miniatuur selectie -->
                 <div class="grid grid-cols-4 gap-2">
-                    <button onclick="changePreview('https://placehold.co/1280x720/0f172a/f59e0b?text=EUROPA+THEATER+1938-1945+%7C+STRATEGISCHE+KAART')" class="border-2 border-sky-400 rounded overflow-hidden aspect-video opacity-100 hover:opacity-100 transition">
-                        <img src="https://placehold.co/320x180/0f172a/f59e0b?text=Wereldkaart" class="w-full h-full object-cover">
+                    <button onclick="changePreview('images/kaart.png', 'EUROPA THEATER 1938-1945 // STRATEGISCHE KAART', this)" class="thumb-btn border-2 border-sky-400 rounded overflow-hidden aspect-video opacity-100 transition cursor-pointer bg-slate-900">
+                        <img src="images/kaart.png" onerror="this.src='images/banner.jpg'" alt="Wereldkaart" class="w-full h-full object-cover">
                     </button>
-                    <button onclick="changePreview('https://placehold.co/1280x720/1e1710/fbbf24?text=ENIGMA+DECODERING+%26+DOSSIERS')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
-                        <img src="https://placehold.co/320x180/1e1710/fbbf24?text=Enigma+Terminal" class="w-full h-full object-cover">
+                    <button onclick="changePreview('images/terminal.png', 'ENIGMA TELEGRAAF // GEHEIME DOSSIERS', this)" class="thumb-btn border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-70 hover:opacity-100 transition cursor-pointer bg-slate-900">
+                        <img src="images/terminal.png" onerror="this.src='images/banner.jpg'" alt="Enigma Terminal" class="w-full h-full object-cover">
                     </button>
-                    <button onclick="changePreview('https://placehold.co/1280x720/2a1a08/f59e0b?text=HISTORISCHE+VELDPOST+CUTSCENES')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
-                        <img src="https://placehold.co/320x180/2a1a08/f59e0b?text=Veldpost+Brieven" class="w-full h-full object-cover">
+                    <button onclick="changePreview('images/brief.png', 'VELDPOST // HISTORISCHE OOGGETUIGEN', this)" class="thumb-btn border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-70 hover:opacity-100 transition cursor-pointer bg-slate-900">
+                        <img src="images/brief.png" onerror="this.src='images/banner.jpg'" alt="Veldpost Brieven" class="w-full h-full object-cover">
                     </button>
-                    <button onclick="changePreview('https://placehold.co/1280x720/3a0808/ef4444?text=BESLUITVORMING+%26+GEVOLGEN')" class="border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-75 hover:opacity-100 transition">
-                        <img src="https://placehold.co/320x180/3a0808/ef4444?text=Dilemma%27s" class="w-full h-full object-cover">
+                    <button onclick="changePreview('images/dilemma.png', 'GEALLIEERD OPPERBEVEL // STRATEGISCHE KEUZES', this)" class="thumb-btn border border-slate-700 hover:border-sky-400 rounded overflow-hidden aspect-video opacity-70 hover:opacity-100 transition cursor-pointer bg-slate-900">
+                        <img src="images/dilemma.png" onerror="this.src='images/banner.jpg'" alt="Dilemma's" class="w-full h-full object-cover">
                     </button>
                 </div>
             </div>
 
-            <!-- Rechterkolom: Game Cover & Metadata (5 kolommen) -->
+            <!-- Rechterkolom: Hoofdbanner & Game Info -->
             <div class="lg:col-span-5 flex flex-col justify-between">
                 <div>
-                    <img src="https://placehold.co/600x260/1e293b/f59e0b?text=STOPPING+AXIS+EXPANSION" alt="Banner" class="w-full rounded mb-3 border border-slate-700/60">
+                    <div class="rounded overflow-hidden mb-3 border border-slate-700/60 aspect-video bg-slate-900 shadow-md">
+                        <img src="images/banner.jpg" alt="Stopping Axis Expansion Banner" class="w-full h-full object-cover">
+                    </div>
                     <p class="text-sm text-slate-300 leading-relaxed mb-4">
                         Stap in de schoenen van het Geallieerd Opperbevel tijdens de Tweede Wereldoorlog (1938–1945). Balanceer tussen <strong>Cohesie</strong>, <strong>Logistiek</strong> en <strong>Thuisfront Moraal</strong> terwijl jouw historische keuzes het lot van Europa bepalen.
                     </p>
@@ -139,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- Tags -->
                 <div class="mt-4 pt-3 border-t border-slate-800">
                     <div class="text-[11px] text-slate-500 mb-1.5">Populaire tags voor dit product:</div>
                     <div class="flex flex-wrap gap-1.5">
@@ -152,11 +150,10 @@
             </div>
         </div>
 
-        <!-- AANKOOP / LAUNCH BALK (Exact zoals op Steam) -->
+        <!-- AANKOOP / LAUNCH BALK -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div class="lg:col-span-8 space-y-6">
                 
-                <!-- De Koop / Launch Box -->
                 <div class="steam-purchase-box p-5 rounded-md border border-sky-900/50 shadow-xl relative overflow-hidden">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
@@ -164,18 +161,15 @@
                             <p id="purchase-subtext" class="text-xs text-slate-300 mt-0.5">Inclusief volledige campagne (1938-1945), D3 Europa-kaart & Historische Dossiers.</p>
                         </div>
 
-                        <!-- Prijs + Actieknop -->
                         <div class="flex items-center bg-black/60 p-1.5 rounded border border-slate-700/80 self-start sm:self-center">
                             <div id="price-tag" class="px-3 text-sm font-semibold text-slate-200">
                                 Gratis <span class="text-xs text-emerald-400 ml-1">(Educatie Licentie)</span>
                             </div>
 
-                            <!-- Knop 1: Kopen (Zichtbaar als nog niet gekocht) -->
                             <button id="btn-buy-game" onclick="purchaseGame()" class="btn-steam-green text-white font-bold text-sm px-5 py-2.5 rounded transition cursor-pointer shadow">
                                 Toevoegen aan account
                             </button>
 
-                            <!-- Knop 2: Spelen / Launchen (Zichtbaar na aankoop) -->
                             <button id="btn-launch-game" onclick="launchGame()" class="hidden btn-steam-blue text-white font-bold text-sm px-6 py-2.5 rounded transition cursor-pointer shadow flex items-center gap-2">
                                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 NU SPELEN
@@ -184,7 +178,6 @@
                     </div>
                 </div>
 
-                <!-- Over dit spel -->
                 <div class="steam-card p-6 rounded-md border border-slate-800/80 space-y-4">
                     <h3 class="text-sm font-bold uppercase tracking-wider text-white border-b border-slate-700/80 pb-2">Over dit spel</h3>
                     <p class="text-sm text-slate-300 leading-relaxed">
@@ -199,7 +192,6 @@
                 </div>
             </div>
 
-            <!-- Rechter zijbalk: Systeemeisen & Features -->
             <div class="lg:col-span-4 space-y-4">
                 <div class="steam-card p-4 rounded-md border border-slate-800/80 text-xs space-y-2.5">
                     <div class="flex items-center gap-2.5 text-slate-300">
@@ -230,7 +222,6 @@
     <main id="view-library" class="hidden max-w-6xl w-full mx-auto px-4 py-8 flex-1">
         <div class="bg-[#171a21] border border-slate-800 rounded-lg overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 min-h-[480px]">
             
-            <!-- Zijbalk spellenlijst -->
             <div class="md:col-span-3 bg-[#12151a] border-r border-slate-800 p-3">
                 <div class="text-xs font-bold uppercase text-slate-500 tracking-wider mb-3 px-2">Mijn Spellen</div>
                 <div id="library-empty-msg" class="text-xs text-slate-500 px-2 italic">
@@ -242,18 +233,17 @@
                 </div>
             </div>
 
-            <!-- Rechter detailpaneel -->
             <div class="md:col-span-9 p-6 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-[#1b2838]">
                 <div id="library-content-locked" class="my-auto text-center space-y-3">
                     <p class="text-slate-400 text-sm">Je bibliotheek is nog leeg. Ga naar de winkel om het spel aan je account toe te voegen.</p>
-                    <button onclick="switchTab('store')" class="btn-steam-blue text-white text-xs font-bold px-4 py-2 rounded">Terug naar Winkel</button>
+                    <button onclick="switchTab('store')" class="btn-steam-blue text-white text-xs font-bold px-4 py-2 rounded cursor-pointer">Terug naar Winkel</button>
                 </div>
 
                 <div id="library-content-unlocked" class="hidden space-y-6">
-                    <div class="relative rounded-lg overflow-hidden border border-slate-700 h-56 flex items-end p-6 bg-cover bg-center" style="background-image: linear-gradient(to top, #0f172a, transparent), url('https://placehold.co/1200x500/0f172a/f59e0b?text=GEALLIEERD+OPPERBEVEL');">
+                    <div class="relative rounded-lg overflow-hidden border border-slate-700 h-60 flex items-end p-6 bg-cover bg-center" style="background-image: linear-gradient(to top, #0f172a, rgba(15, 23, 42, 0.15)), url('images/banner.jpg');">
                         <div>
-                            <span class="text-xs font-mono-mil text-amber-400 uppercase tracking-widest">Gereed om te starten</span>
-                            <h2 class="text-3xl font-extrabold text-white">Stopping Axis Expansion</h2>
+                            <span class="text-xs font-mono-mil text-amber-400 uppercase tracking-widest drop-shadow">Gereed om te starten</span>
+                            <h2 class="text-3xl font-extrabold text-white drop-shadow">Stopping Axis Expansion</h2>
                         </div>
                     </div>
 
@@ -276,7 +266,7 @@
         </div>
     </main>
 
-    <!-- LAUNCHING OVERLAY (Wanneer op Spelen wordt geklikt) -->
+    <!-- LAUNCHING OVERLAY -->
     <div id="launch-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden items-center justify-center">
         <div class="bg-[#171a21] border border-sky-500/40 p-6 rounded-lg max-w-sm w-full text-center shadow-2xl space-y-4">
             <div class="w-12 h-12 mx-auto rounded-full border-4 border-sky-500 border-t-transparent animate-spin"></div>
@@ -301,8 +291,20 @@
             }
         });
 
-        function changePreview(src) {
-            document.getElementById('preview-img').src = src;
+        function changePreview(src, caption, clickedBtn) {
+            const img = document.getElementById('preview-img');
+            img.src = src;
+            document.getElementById('preview-caption').textContent = caption;
+
+            document.querySelectorAll('.thumb-btn').forEach(btn => {
+                btn.classList.remove('border-2', 'border-sky-400', 'opacity-100');
+                btn.classList.add('border', 'border-slate-700', 'opacity-70');
+            });
+
+            if (clickedBtn) {
+                clickedBtn.classList.remove('border', 'border-slate-700', 'opacity-70');
+                clickedBtn.classList.add('border-2', 'border-sky-400', 'opacity-100');
+            }
         }
 
         function purchaseGame() {
@@ -333,13 +335,13 @@
             if (tab === 'store') {
                 viewStore.classList.remove('hidden');
                 viewLib.classList.add('hidden');
-                tabStore.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition";
-                tabLib.className = "text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5";
+                tabStore.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition cursor-pointer";
+                tabLib.className = "text-slate-300 hover:text-white pb-1 transition flex items-center gap-1.5 cursor-pointer";
             } else {
                 viewStore.classList.add('hidden');
                 viewLib.classList.remove('hidden');
-                tabLib.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition flex items-center gap-1.5";
-                tabStore.className = "text-slate-300 hover:text-white pb-1 transition";
+                tabLib.className = "text-sky-400 border-b-2 border-sky-400 pb-1 transition flex items-center gap-1.5 cursor-pointer";
+                tabStore.className = "text-slate-300 hover:text-white pb-1 transition cursor-pointer";
             }
         }
 
