@@ -1,48 +1,18 @@
-### Teamleden
-Karol (PolskiKarolek1): Manager
-Marco (merkoPolo): Chef Kwaliteit
-Tristan (sigmaboyTris): Chef Marketing
-Kacper (educatixxx): Chef Product
+# [Choices of War]
 
-# Choices-of-War
-# WWII: Dual Perspectives - Marketing & Projectdocumentatie
+## Klantwens
+[Jessica Zonneveld]
 
-## Productbeschrijving
-**WWII: Dual Perspectives** is een strategische, browsergebaseerde game ontwikkeld voor het vak informatica. De game biedt spelers de mogelijkheid om de Tweede Wereldoorlog te herbeleven vanuit twee verschillende perspectieven: de Geallieerden en de Asmogendheden. 
+## Hoofdissues
+- [D) Klantvraag en ontwerp](https://github.com/TEAM/REPO/issues/NUMMER-D)
+- [E) Bouw en eerste tests](https://github.com/TEAM/REPO/issues/NUMMER-E)
+- [I) Verbetering en hertests](https://github.com/TEAM/REPO/issues/NUMMER-I)
+- [M) Uitleg en samenwerking](https://github.com/TEAM/REPO/issues/NUMMER-M)
 
-### Kernkenmerken
-* **Dubbel Perspectief:** Ervaar tactische beslissingen en historische gebeurtenissen vanuit beide zijden van het conflict.
-* **Educatief & Tactisch:** Combineert historische feiten met beurtengebaseerde tactische besluitvorming.
-* **Toegankelijk:** Direct speelbaar via de webbrowser zonder installatie.
+## Zo gebruik je het
+1. [Waar begin je?]
+2. [Wat doe je en wat zie je daarna?]
 
----
-
-## Top 3 Verdienmodellen
-
-### 1. Freemium (Basisgame Gratis + Uitbreidingspakketten / DLC)
-* **Uitleg:** Het basisspel met de eerste historische campagnes is gratis toegankelijk. Aanvullende historische veldslagen of gespecialiseerde scenario's kunnen als uitbreidingspakket gekocht worden.
-* **Waarom geschikt:** Verlaagt de drempel voor nieuwe spelers en bouwt snel een grote gebruikersgroep op.
-
-### 2. Cosmetische In-Game Aankopen (Skins & Emblemen)
-* **Uitleg:** Spelers kunnen visuele aanpassingen aanschaffen voor eenheden, voertuigen of profieliconen. Dit geeft **geen** voordeel in het spel (*no pay-to-win*).
-* **Waarom geschikt:** Waarborgt een eerlijke speelervaring en spreekt spelers aan die hun eenheden willen personaliseren.
-
-### 3. Educatieve Licenties (B2B / Scholenmodel)
-* **Uitleg:** Een speciale onderwijsversie voorzien van lesmateriaal, achtergrondinformatie en een docentendashboard wordt verkocht aan scholen.
-* **Waarom geschikt:** Sluit direct aan bij het educatieve karakter van het informaticaproject en levert een stabiele inkomstenstroom op.
-
-### Titel: Mogelijke klant benaderen – Geschiedenisdocent
-
-## Beschrijving:
-We willen een geschiedenisdocent benaderen als mogelijke klant voor WWII: Dual Perspectives. Het doel is te onderzoeken of onze game geschikt is als educatief hulpmiddel tijdens geschiedenislessen over de Tweede Wereldoorlog.
-
-## Taken:
-- [ ] Een geschikte geschiedenisdocent zoeken.
-- [ ] Contactgegevens van de docent vinden.
-- [ ] Conceptmail controleren en goedkeuren.
-- [ ] E-mail versturen.
-- [ ] Feedback van de docent verzamelen.
-- [ ] Feedback bespreken binnen het team.
-
-# Assignee: meneer-van-informatica
-# Labels: Marketing, Feedback
+## Code en demo
+- [Broncode](https://github.com/TEAM/REPO)
+- [Open de demo](https://JULLIE-DEMO)
